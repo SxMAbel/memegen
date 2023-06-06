@@ -1,0 +1,43 @@
+{
+  "name": "memegen",
+  "version": "0.0.1",
+  "description": "Generate memes.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "types": "rtb --dist dist"
+  },
+  "devDependencies": {
+   
+  },
+  "dependencies": {
+   
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "object-curly-spacing": [
+        "error",
+        "always"
+      ]
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ]
+  },
+  "author": "Abel Purnwasy",
+  "contributors": ["unf6"],
+  "license": "Apache-2.0"
+}
