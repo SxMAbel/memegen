@@ -11,9 +11,9 @@ import {
 
 export class Reddit {
   /** An array full of memes from your query term. */
-  memes?: RedditMemesObject[] = [];
+  private memes?: RedditMemesObject[] = [];
   /** The url to which we make the request for memes on reddit. */
-  endoint: string = redditMemeEndpoint;
+  private endoint: string = redditMemeEndpoint;
 
   /**
    * Get memes from Reddit API endpoint.

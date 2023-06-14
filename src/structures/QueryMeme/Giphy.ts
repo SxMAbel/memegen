@@ -9,13 +9,13 @@ import {
 
 export class Giphy {
   /** The API key for sending requests to Giphy API. */
-  key: string;
+  private key: string;
   /** Default neme return limit. */
-  limit: number = 1;
+  private limit: number = 1;
   /** An array of memes from API response. */
-  memes: GiphyMemesObject[] = [];
+  private memes: GiphyMemesObject[] = [];
   /** The url to which we make the request for memes on Giphy. */
-  endpoint: string = giphyMemeEndpoint;
+  private endpoint: string = giphyMemeEndpoint;
 
   /**
    * Get meme(s) from Giphy API endpoint.
@@ -27,13 +27,15 @@ export class Giphy {
       throw new Error("Missing Giphy API key.");
     }
 
+    this.key = options.giphyApiKey;
+
     if (!options?.query) {
       throw new Error("Missing search query.");
     }
 
     try {
       const response = await axios({
-        url: `${this.endpoint}${options.giphyApiKey}&q=${options.query}$limit=${
+        url: `${this.endpoint}${this.key}&q=${options.query}$limit=${
           options?.limit ?? this.limit
         }`,
         method: RequestTypes.Get,
