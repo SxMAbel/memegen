@@ -20,7 +20,7 @@ export class RandomMeme {
   /** Random meme endpoint */
   private endPoint: string = randomMemeEndpoint;
 
-  public async randomMeme(): Promise<RandomMemeResponse> {
+  public async fetch(): Promise<RandomMemeResponse> {
     const response = await axios({
       url: this.endPoint,
       method: RequestTypes.Get,

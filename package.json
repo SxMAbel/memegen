@@ -1,7 +1,7 @@
 {
   "name": "memegen-techstack",
-  "version": "1.0.3-dev",
-  "description": "Generate memes.",
+  "version": "2.0.0",
+  "description": "Generate memes either randomly or by query.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -44,6 +44,10 @@
       "plugin:@typescript-eslint/recommended"
     ]
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SxMAbel/memegen.git"
+  },
   "author": "Abel Purnwasy",
   "contributors": [
     "unf6",
@@ -58,6 +62,11 @@
     "memegenerator",
     "memegen",
     "techstack",
-    "TechStack"
+    "TechStack",
+    "queryMeme",
+    "redditMemes",
+    "reddit",
+    "giphyMemes",
+    "giphy"
   ]
 }

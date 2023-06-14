@@ -1,32 +1,74 @@
-## How to use Random Meme Generator
+## How To Use memegen-techstack
 
 ## Typescript
 
 ```ts
-import { RandomMeme } from "memegen-techstack";
-
-const initMeme = new RandomMeme();
-const meme = await initMeme.randomMeme();
+import { MemeGen } from "memegen-techstack";
 ```
 
 ## Javascript
 
 ```js
-const { RandomMeme } = require("memegen-techstack");
+const { MemeGen } = require("memegen-techstack");
+```
 
-const initMeme = new RandomMeme();
-const meme = await initMeme.randomMeme();
+## Get Random Memes
+
+**Example**
+
+```js
+const memeGen = new MemeGen();
+const meme = await memeGen.random.fetch();
 ```
 
 > **`meme` will return:**
-- HDPreview
-- Author
-- NSFW
-- Preview
-- Spoiler
-- Title
-- URL
 
-## How to use Meme Generator by Your Input Phrase
+- HDPreview `- string`
+- Author `- string`
+- NSFW `- boolean`
+- Preview `- array`
+- Spoiler `- boolean`
+- Title `- string`
+- URL `- string`
 
-**Coming Soon**
+> **Each time you use `.random.fetch()` you will get a different meme.**
+
+## Search For A Meme From Your Input Phrase
+
+## Using Reddit API
+
+**Example**
+
+```js
+const memeGen = new MemeGen();
+const meme = await memeGen.reddit.fetch({ query: "", sort: "" });
+```
+
+> **`meme` will return `.memes` either an array or a string if no memes found for the search input.**
+
+**`.memes` array is consists of:**
+
+- title `- string`
+- url `- string`
+
+## Using Giphy API
+
+**Example**
+
+```js
+const memeGen = new MemeGen();
+const meme = await memeGen.giphy.fetch({
+  giphyApiKey: "apikey",
+  query: "",
+  limit: 1,
+});
+```
+
+> **`meme` will return `.memes` if limit greater than 1. `.title` & `.imageURL` will return null.**
+
+> **`meme` will return `.title` & `.imageURL` if limit is 1. `.memes` will return null.**
+
+NOTE: **The `.memes` will return and array with object(s):**
+
+- title `- string`
+- imageURL `- string`

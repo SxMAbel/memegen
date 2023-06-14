@@ -1,1 +1,1 @@
-export { RandomMeme } from "./structures/RandomMeme";
+export { MemeGen } from "./structures/Meme";
