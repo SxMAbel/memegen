@@ -11,7 +11,7 @@ export class Giphy {
   /** The API key for sending requests to Giphy API. */
   private key: string;
   /** Default neme return limit. */
-  private limit: number = 1;
+  private limit: number;
   /** An array of memes from API response. */
   private memes: GiphyMemesObject[] = [];
   /** The url to which we make the request for memes on Giphy. */
@@ -22,7 +22,9 @@ export class Giphy {
    */
   public async fetch(
     options: GiphyMemesFetchOptions
-  ): Promise<GiphyMemesArray | GiphyMemesObject | string> {
+  ): Promise<GiphyMemesArray | GiphyMemesObject> {
+    this.limit = 1;
+
     if (!options?.giphyApiKey) {
       throw new Error("Missing Giphy API key.");
     }
@@ -33,11 +35,13 @@ export class Giphy {
       throw new Error("Missing search query.");
     }
 
+    if (options?.limit) {
+      this.limit = options.limit;
+    }
+
     try {
       const response = await axios({
-        url: `${this.endpoint}${this.key}&q=${options.query}$limit=${
-          options?.limit ?? this.limit
-        }`,
+        url: `${this.endpoint}${this.key}&q=${options.query}$limit=${this.limit}`,
         method: RequestTypes.Get,
         headers: {
           "Content-Type": "application/json",
@@ -68,8 +72,6 @@ export class Giphy {
           memes: null,
         };
       }
-
-      return `No meme(s) found for query -> ${options.query}`;
     } catch (error) {
       throw error;
     }

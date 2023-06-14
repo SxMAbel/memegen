@@ -20,7 +20,7 @@ export class Reddit {
    */
   public async fetch(
     options: RedditMemeFetchOptions
-  ): Promise<RedditMemeArray | string> {
+  ): Promise<RedditMemeArray> {
     if (!options?.query) {
       throw new TypeError("Enter a meme search query.");
     }
@@ -50,8 +50,6 @@ export class Reddit {
           memes: this.memes,
         };
       }
-
-      return `No memes found for query -> ${options.query}.`;
     } catch (error) {
       throw error;
     }
